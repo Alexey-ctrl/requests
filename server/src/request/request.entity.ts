@@ -6,7 +6,7 @@ import {
   BelongsTo,
 } from 'sequelize-typescript';
 import { Project } from '../project/project.entity';
-import { RequestStatus } from './requestStatus';
+import { RequestStatus } from '../request-status/request-status.entity';
 
 interface RequestCreationAttributes {
   name: string;

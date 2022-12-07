@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { RequestModule } from './request/request.module';
-import { SequelizeModule } from '@nestjs/sequelize';
 import { ConfigModule } from '@nestjs/config';
+import { SequelizeModule } from '@nestjs/sequelize';
+import { RequestModule } from './request/request.module';
 import { ProjectModule } from './project/project.module';
-import { RequestStatus } from './request/requestStatus';
+import { RequestStatus } from './request-status/request-status.entity';
 import { Project } from './project/project.entity';
 import { Request } from './request/request.entity';
 
