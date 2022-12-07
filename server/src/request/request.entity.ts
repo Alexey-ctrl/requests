@@ -4,7 +4,6 @@ import {
   Table,
   ForeignKey,
   BelongsTo,
-  HasOne,
 } from 'sequelize-typescript';
 import { Project } from '../project/project.entity';
 import { RequestStatus } from './requestStatus';
@@ -12,6 +11,8 @@ import { RequestStatus } from './requestStatus';
 interface RequestCreationAttributes {
   name: string;
   description: string;
+  projectId?: number;
+  statusId: number;
 }
 
 @Table
@@ -26,7 +27,7 @@ export class Request extends Model<Request, RequestCreationAttributes> {
   description: string;
 
   @ForeignKey(() => Project)
-  @Column({ allowNull: false })
+  @Column
   projectId: number;
 
   @BelongsTo(() => Project)

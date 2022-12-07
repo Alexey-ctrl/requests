@@ -18,6 +18,7 @@ import { Request } from './request/request.entity';
       username: process.env.PG_USER,
       password: process.env.PG_PASSWORD,
       models: [Request, RequestStatus, Project],
+      autoLoadModels: true,
     }),
     RequestModule,
     ProjectModule,
