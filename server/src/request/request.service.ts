@@ -11,6 +11,7 @@ import { UpdateRequestDto } from './dto/updateRequest.dto';
 import { RequestStatusService } from '../request-status/request-status.service';
 import { RequestStatus } from '../request-status/request-status.entity';
 import { SetStatusDto } from './dto/setStatusDto';
+import { where } from 'sequelize';
 
 @Injectable()
 export class RequestService {
@@ -26,6 +27,7 @@ export class RequestService {
   async getUnbounded(): Promise<Request[]> {
     return this.requestRepository.findAll({
       where: { projectId: null },
+      include: RequestStatus,
     });
   }
 
@@ -53,6 +55,6 @@ export class RequestService {
     if (!newStatus) throw new BadRequestException('Invalid statusId');
     request.statusId = newStatus.id;
     await request.save();
-    return { updated: true };
+    return request;
   }
 }

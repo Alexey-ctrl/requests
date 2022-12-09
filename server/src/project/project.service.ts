@@ -4,6 +4,7 @@ import { Project } from './project.entity';
 import { CreateProjectDto } from './dto/CreateProjectDto';
 import { UpdateProjectDto } from './dto/UpdateProject.dto';
 import { Request } from '../request/request.entity';
+import { RequestStatus } from '../request-status/request-status.entity';
 
 @Injectable()
 export class ProjectService {
@@ -24,7 +25,9 @@ export class ProjectService {
   }
 
   async getProjectRequests(projectId: number) {
-    return this.projectRepository.findByPk(projectId, { include: Request });
+    return this.projectRepository.findByPk(projectId, {
+      include: [{ model: Request, include: [RequestStatus] }],
+    });
   }
 
   async update(id: number, updateProjectDto: UpdateProjectDto) {

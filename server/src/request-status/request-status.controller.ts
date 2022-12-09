@@ -9,4 +9,8 @@ export class RequestStatusController {
   async getStageStatuses(@Param() { stage }) {
     return this.requestStatusService.stageStatuses(stage);
   }
+  @Get('/statuses')
+  async getStatuses() {
+    return this.requestStatusService.getAll();
+  }
 }

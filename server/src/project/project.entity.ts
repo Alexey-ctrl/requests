@@ -13,6 +13,9 @@ export class Project extends Model<Project, ProjectCreationAttributes> {
   @Column({ allowNull: false })
   name: string;
 
-  @HasMany(() => Request)
+  @HasMany(() => Request, {
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
+  })
   requests: Request[];
 }

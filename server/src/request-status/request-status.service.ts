@@ -12,4 +12,8 @@ export class RequestStatusService {
   async stageStatuses(stage: number) {
     return this.requestStatusRepository.findAll({ where: { stage } });
   }
+
+  async getAll() {
+    return this.requestStatusRepository.findAll();
+  }
 }
